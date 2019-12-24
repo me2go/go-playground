@@ -1,8 +1,14 @@
 package main
 
-import "github.com/me2go/go-playground/sync"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
 	//atomic.Load64Align()
-	sync.ConcurrentReadAndWrite()
+	//sync.ConcurrentReadAndWrite()
+
+	emptyMap := make(map[[32]byte]uint16)
+	fmt.Printf("%d\n", reflect.TypeOf(emptyMap).Size())
 }
