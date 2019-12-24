@@ -1,14 +1,16 @@
 package main
 
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
 func main() {
 	//atomic.Load64Align()
-	//sync.ConcurrentReadAndWrite()
-
-	emptyMap := make(map[[32]byte]uint16)
-	fmt.Printf("%d\n", reflect.TypeOf(emptyMap).Size())
+	a := []interface{}{1, 2, 3, 4}
+	f := []func(){}
+	for _, b := range a {
+		c := b
+		f = append(f, func() { fmt.Println(c) })
+	}
+	for _, e := range f {
+		e()
+	}
 }
