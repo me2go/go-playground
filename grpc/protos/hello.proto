@@ -1,14 +1,19 @@
 syntax = "proto3";
 
-//option go_package = "protos";
-package protos;
+import "google/api/annotations.proto";
 
-service HelloService {
-    rpc Hello (Msg) returns (Msg) {};
-}
+option go_package = "github.com/me2go/go-playground/grpc/gen/services";
+package services;
 
 message Msg {
     string msg = 1;
 }
 
-
+service HelloService {
+    rpc Hello (Msg) returns (Msg) {
+        option(google.api.http)= {
+            post: "/v1/example/echo"
+            body: "*"
+        };
+    }
+}
